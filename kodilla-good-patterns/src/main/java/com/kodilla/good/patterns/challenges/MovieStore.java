@@ -22,4 +22,14 @@ class MovieStore {
         booksTitlesWithTranslations.put("FL", flashTranslations);
         return booksTitlesWithTranslations;
     }
+
+    public static void streamTitles() {
+        MovieStore movieStore = new MovieStore();
+        movieStore.getMovies().entrySet().stream()
+                .filter(entry -> entry.getValue().size() > 0)
+                .map(Map.Entry::getValue)
+                .flatMap(List::stream)
+                .map(Object -> Object.toString() + "!")
+                .forEach(System.out::print);
+    }
 }

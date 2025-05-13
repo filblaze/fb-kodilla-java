@@ -25,16 +25,4 @@ class BoardTestSuite {
         //Then
         board.printBoard();
     }
-
-    @Test
-    void testContext() {
-        //Given
-        ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.portfolio");
-
-        //When & Then
-        System.out.println("===== Beans list: ==== >>");
-        Arrays.stream(context.getBeanDefinitionNames())
-                .forEach(System.out::println);
-        System.out.println("===== Beans list: ==== >>");
-    }
 }

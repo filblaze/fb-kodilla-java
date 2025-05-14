@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class BoardTestSuite {
 
@@ -47,6 +48,15 @@ class BoardTestSuite {
         System.out.println(board);
         System.out.println(clonedBoard);
 
+        //Making a deep clone of object board
+        Board deepClonedBoard = null;
+        try {
+            deepClonedBoard = board.deepCopy();
+            deepClonedBoard.setName("Project number 3");
+        } catch (CloneNotSupportedException e) {
+            System.out.println(e);
+        }
+
         //When
         //removing elements
         board.getLists().remove(listToDo);
@@ -54,7 +64,11 @@ class BoardTestSuite {
         //Then
         System.out.println(board);
         System.out.println(clonedBoard);
+        System.out.println(deepClonedBoard);
         assertEquals(2, board.getLists().size());
-        assertEquals(3, clonedBoard.getLists().size());
+        assertEquals(2, clonedBoard.getLists().size());
+        assertEquals(3, deepClonedBoard.getLists().size());
+        assertEquals(clonedBoard.getLists(), board.getLists());
+        assertNotEquals(deepClonedBoard.getLists(), board.getLists());
     }
 }

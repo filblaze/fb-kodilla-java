@@ -1,0 +1,70 @@
+CREATE TABLE ISSUESLISTS
+    (
+        ID SERIAL PRIMARY KEY,
+        NAME VARCHAR(100)
+    )
+;
+CREATE TABLE ISSUES
+    (
+        ID SERIAL PRIMARY KEY                                ,
+        ISSUESLIST_ID      BIGINT UNSIGNED NOT NULL          ,
+        SUMMARY            VARCHAR(100)                      ,
+        DESCRIPTION        VARCHAR(250)                      ,
+        USER_ID_ASSIGNEDTO BIGINT UNSIGNED NOT NULL          ,
+        FOREIGN KEY (ISSUESLIST_ID) REFERENCES ISSUESLIST(ID),
+        FOREIGN KEY (USER_ID_ASSIGNEDTO) REFERENCES USERS(ID)
+    )
+;
+INSERT INTO ISSUESLISTS (NAME)
+VALUES
+    ('ToDo'),
+    ('InProgress'),
+    ('Done');
+	
+-- Przypisanie 5 rekordów do ISSUESLIST_ID = 1
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (1, 'Błąd krytyczny w module logowania', 'Użytkownicy zgłaszają niemożność zalogowania się do systemu po ostatniej aktualizacji. Problem występuje globalnie.', 1);
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (1, 'Problem z wyświetlaniem strony głównej na mobilnych', 'Strona główna nie renderuje się poprawnie na urządzeniach mobilnych z systemem Android.', 2);
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (1, 'Nie działa wyszukiwarka produktów', 'Wyszukiwarka na stronie sklepu nie zwraca żadnych wyników, nawet dla istniejących produktów.', 3);
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (1, 'Błąd przy dodawaniu produktu do koszyka', 'Podczas próby dodania produktu do koszyka pojawia się błąd 500.', 4);
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (1, 'Literówka w opisie promocji', 'W opisie promocji "Wiosenne Okazje" znaleziono literówkę w słowie "promocja".', 5);
+
+-- Przypisanie 5 rekordów do ISSUESLIST_ID = 2
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (2, 'Problem z generowaniem raportu sprzedaży', 'Raport sprzedaży za poprzedni miesiąc nie generuje się, proces zawiesza się w połowie.', 1); -- Poprzednio 6, zmieniono na 1
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (2, 'Niepoprawne dane w profilu użytkownika', 'Niektórzy użytkownicy zgłaszają, że ich dane adresowe w profilu są nieaktualne mimo ich zmiany.', 2); -- Poprzednio 1, teraz 2 (dla cyklu)
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (2, 'Błąd eksportu danych do formatu CSV', 'Funkcja eksportu listy klientów do pliku CSV generuje pusty plik.', 3); -- Poprzednio 2, teraz 3 (dla cyklu)
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (2, 'Wolne ładowanie panelu administracyjnego', 'Panel administracyjny ładuje się bardzo wolno, zwłaszcza sekcja zarządzania użytkownikami.', 4); -- Poprzednio 3, teraz 4 (dla cyklu)
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (2, 'Problem z integracją z zewnętrznym API płatności', 'Sporadycznie występują problemy z przetwarzaniem płatności przez bramkę X.', 5); -- Poprzednio 4, teraz 5 (dla cyklu)
+
+-- Przypisanie 5 rekordów do ISSUESLIST_ID = 3
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (3, 'Aplikacja mobilna zawiesza się przy starcie', 'Użytkownicy systemu iOS zgłaszają, że aplikacja mobilna często zawiesza się zaraz po uruchomieniu.', 1); -- Poprzednio 5, teraz 1 (dla cyklu)
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (3, 'Powiadomienia email nie są wysyłane', 'System przestał wysyłać powiadomienia email o nowych zamówieniach do klientów.', 2); -- Poprzednio 6, zmieniono na 2
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (3, 'Błąd 404 na stronie kontaktowej', 'Link do strony kontaktowej w stopce prowadzi do strony błędu 404.', 3); -- Poprzednio 1, teraz 3 (dla cyklu)
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (3, 'Nie można zaktualizować hasła użytkownika', 'Funkcja resetowania i zmiany hasła nie działa poprawnie, zwraca nieznany błąd.', 4); -- Poprzednio 2, teraz 4 (dla cyklu)
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (3, 'Problem z sortowaniem wyników na liście', 'Sortowanie produktów według ceny na stronie kategorii nie działa zgodnie z oczekiwaniami.', 5); -- Poprzednio 3, teraz 5 (dla cyklu)

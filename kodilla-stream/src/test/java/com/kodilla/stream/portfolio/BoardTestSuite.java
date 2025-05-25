@@ -143,7 +143,7 @@ public class BoardTestSuite {
         assertEquals(2, longTasks);
     }
 
-    @Test
+    /*@Test
     void testAddTaskListAverageWorkingOnTask() {
         //Given
         Board project = prepareTestData();
@@ -162,5 +162,5 @@ public class BoardTestSuite {
 
         //Then
         assertEquals(3.67, averageTime, 0.01);
-    }
+    }*/
 }

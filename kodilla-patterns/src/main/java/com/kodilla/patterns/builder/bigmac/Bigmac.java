@@ -5,22 +5,9 @@ import java.util.List;
 
 public class Bigmac {
 
-    public static final String SESAME = "SESAME";
-    public static final String PLAIN = "PLAIN";
     private final String bun;
     private final int burgers;
-    public static final String STANDARD = "STANDARD";
-    public static final String ISLANDS = "ISLANDS";
-    public static final String BBQ = "BBQ";
     private final String sauce;
-    public static final String LETTUCE = "LETTUCE";
-    public static final String ONION = "ONION";
-    public static final String BACON = "BACON";
-    public static final String PICKLE = "PICKLE";
-    public static final String CHILLI = "CHILLI";
-    public static final String MUSHROOM = "MUSHROOM";
-    public static final String SHRIMP = "SHRIMP";
-    public static final String CHEESE = "CHEESE";
     private List<String> ingredients = new ArrayList<>();
 
     public static class BigmacBuilder {
